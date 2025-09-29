@@ -8,7 +8,7 @@ public class Restaurant {
         this.name = nom;
         this.score = score;
     }
-    
+
     public boolean match(String name, int score){
         return this.name.equals(name) && this.score == score;
     }
