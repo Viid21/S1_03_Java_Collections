@@ -1,7 +1,6 @@
 package Level3.Model;
 
 public class Menus {
-
     public static int mainMenu(){
         return Input.askInteger("""
                 What dou you want to do?

@@ -1,5 +1,7 @@
 package Level3.Model;
 
+import java.util.List;
+
 public class Application {
     String projectDir = System.getProperty("user.dir");
 
@@ -7,36 +9,52 @@ public class Application {
         return projectDir;
     }
 
-    String countriesDir = projectDir + "/src/Level1/Ex3/Resources/countries.txt";
     public void play() {
-        int option = -1;
-        while (option != 0) {
+        String namesDir = getProjectDir() + "/src/Level3/Resources/names.csv";
+        List<Client> clientsList = ListManager.clientsListBuilder(ResourceInteractor.resourceReader(namesDir));
+        int option;
+        String message = "";
+
+        do {
             option = Menus.mainMenu();
-            String message = switch (option) {
-                case 1 -> addPerson();
-                case 2 -> "";
-                case 3 -> "";
-                case 4 -> "";
-                case 5 -> "";
-                case 6 -> "";
-                case 7 -> "";
-                case 0 -> exit();
-                default -> "Choose a valid option.";
-            };
-        }
-    }
+            StringBuilder clientsListString = new StringBuilder("___Name___ ____Surnames__ __ID__\n");
+            switch (option){
+                case 1:
+                    ResourceInteractor.resourceWriter(namesDir,Input.askName("Put the name:") + "," +
+                            Input.askName("Put the surnames:") + "," + Input.askId("Put the ID:"));
+                    message = "Person added.";
+                    break;
+                case 2:
+                    clientsList.sort(ListManager.getDescendantName());
+                    break;
+                case 3:
+                    clientsList.sort(ListManager.getAscendantName());
+                    break;
+                case 4:
+                    clientsList.sort(ListManager.getDescendantSurnames());
+                    break;
+                case 5:
+                    clientsList.sort(ListManager.getAscendantSurnames());
+                    break;
+                case 6:
+                    clientsList.sort(ListManager.getDescendantId());
+                    break;
+                case 7:
+                    clientsList.sort(ListManager.getAscendantId());
+                    break;
+                case 0:
+                    message = "Bye bye.";
+                    break;
+                default: message = "Choose a valid option.";
+            }
 
-    public String addPerson(){
-        RecoursesInteractor.resourceWriter(getProjectDir() + "/src/Level3/Resources/names.csv",
-                Input.askName("Put the name:") + "," + Input.askName("Put the surname:") + ","
-                        + Input.askId("Put the ID:"));
-
-        return "Person added.";
-    }
-
-    //TODO: LA RESTA DEL MENU ( POTSER FER UNA CLASSE separada per fer el Sort
-
-    public String exit(){
-        return "Bye bye.";
+            if (option > 1){
+                for(Client client : clientsList){
+                    clientsListString.append(client.toString()).append("\n");
+                }
+                message = clientsListString.toString();
+            }
+            System.out.println(message);
+        } while (option != 0);
     }
 }

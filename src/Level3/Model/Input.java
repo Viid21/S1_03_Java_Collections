@@ -12,7 +12,9 @@ public class Input {
         while(true){
             System.out.println(message);
             try{
-                return sc.nextInt();
+                int i = sc.nextInt();
+                sc.nextLine();
+                return i;
             }catch (InputMismatchException e){
                 System.out.println(mismatchMessage);
             }
@@ -29,10 +31,9 @@ public class Input {
             System.out.println(message);
             String id = sc.next();
             try{
-                if(id.length() < 9){
-                    throw new IdNotValidException("Id is to short.");
-                } else if (id.length() > 9) {
-                    throw new IdNotValidException("Id is to long.");
+                if(id.length() != 9){
+                    String eString = (id.length() < 9) ? "Id is to short." : "Id is to long.";
+                    throw new IdNotValidException(eString);
                 }
                 return id;
             }catch (IdNotValidException e){
