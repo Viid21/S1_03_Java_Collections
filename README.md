@@ -1,6 +1,6 @@
 # 🧑‍💻 Task S1.03. Collections and File Handling  
 **Author:** David Rey  
-**Corrected by:**  
+**Corrected by:** Marc Guillem Palacios ([mxg952](https://github.com/Viid21/S1_03_Java_Collections/issues/1))  
 
 ### 📄 Description  
 This project includes several exercises organized by difficulty level, focusing on Java Collections (ArrayList, HashSet, ListIterator), file reading/writing, and data sorting.
