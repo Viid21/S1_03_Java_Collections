@@ -3,11 +3,11 @@ package Level1.Ex1.Model;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 
 public class Application {
-    ArrayList<Month> months = new ArrayList<>();
+    List<Month> months = new ArrayList<>();
     public void play(){
-        StringBuilder s = new StringBuilder();
         String[] names = {"January", "February", "March", "April", "May",
                 "June", "July", "September", "October", "November", "December"};
 
@@ -17,19 +17,18 @@ public class Application {
 
         months.add(7, new Month("August"));
 
-        for(int i = 0; i < months.size(); i++){
-            s.append((i != (months.size() - 1)) ? months.get(i).getName() + ", " : months.get(i).getName() + ".");
+        System.out.println("ArrayList has the correct order:");
+        for(Month month : months){
+            System.out.println(month.getName());
         }
 
-        System.out.println(s);
+        months.add(7, new Month("August"));
 
         HashSet<Month> monthsHashSet = new HashSet<>(months);
 
-        for(String name : names){
-            monthsHashSet.add(new Month(name));
-        }
-
         Iterator<Month> iterator = monthsHashSet.iterator();
+
+        System.out.println("HashSet has no duplicates:");
         while (iterator.hasNext()) {
             System.out.println(iterator.next().getName());
         }

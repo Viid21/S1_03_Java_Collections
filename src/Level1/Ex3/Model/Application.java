@@ -57,11 +57,10 @@ public class Application {
     }
 
     public void convertScoreToResource(String playerName, int points, String scoreDir){
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(scoreDir))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(scoreDir, true))) {
             writer.write(playerName + ": " + points + " points");
             writer.newLine();
             writer.flush();
-            writer.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

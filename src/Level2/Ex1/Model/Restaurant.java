@@ -1,5 +1,7 @@
 package Level2.Ex1.Model;
 
+import java.util.Objects;
+
 public class Restaurant {
     String name;
     int score;
@@ -9,7 +11,15 @@ public class Restaurant {
         this.score = score;
     }
 
-    public boolean match(String name, int score){
-        return this.name.equals(name) && this.score == score;
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Restaurant that = (Restaurant) o;
+        return score == that.score && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, score);
     }
 }

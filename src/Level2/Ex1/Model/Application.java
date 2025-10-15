@@ -15,7 +15,7 @@ public class Application {
     public String createRestaurant(String name, int score){
         try{
             for(Restaurant restaurant : restaurants){
-                if(restaurant.match(name,score)){
+                if(restaurant.equals(new Restaurant(name, score))){
                     throw new ExceptionRepeatedRestaurant();
                 }
             }

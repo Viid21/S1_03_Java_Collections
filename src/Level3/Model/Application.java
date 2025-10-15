@@ -10,17 +10,20 @@ public class Application {
     }
 
     public void play() {
-        String namesDir = getProjectDir() + "/src/Level3/Resources/names.csv";
-        List<Client> clientsList = ListManager.clientsListBuilder(ResourceInteractor.resourceReader(namesDir));
+
+
         int option;
         String message = "";
 
         do {
+            String namesDir = getProjectDir() + "/src/Level3/Resources/names.csv";
+            List<Client> clientsList = ListManager.clientsListBuilder(ResourceInteractor.resourceReader(namesDir));
+
             option = Menus.mainMenu();
             StringBuilder clientsListString = new StringBuilder("___Name___ ____Surnames__ __ID__\n");
-            switch (option){
+            switch (option) {
                 case 1:
-                    ResourceInteractor.resourceWriter(namesDir,Input.askName("Put the name:") + "," +
+                    ResourceInteractor.resourceWriter(namesDir, Input.askName("Put the name:") + "," +
                             Input.askName("Put the surnames:") + "," + Input.askId("Put the ID:"));
                     message = "Person added.";
                     break;
@@ -45,11 +48,12 @@ public class Application {
                 case 0:
                     message = "Bye bye.";
                     break;
-                default: message = "Choose a valid option.";
+                default:
+                    message = "Choose a valid option.";
             }
 
-            if (option > 1){
-                for(Client client : clientsList){
+            if (option > 1) {
+                for (Client client : clientsList) {
                     clientsListString.append(client.toString()).append("\n");
                 }
                 message = clientsListString.toString();

@@ -22,6 +22,8 @@ public class Input {
                     throw new ExceptionNameNotValid("This name is not allowed.");
                 }else if(name.length() < 3){
                     throw new ExceptionNameNotValid("Name to short.");
+                }else if(name.matches("^[A-Za-zÀ-ÿ\\u00f1\\u00d1\\s]+$")){
+                    throw new ExceptionNameNotValid("Name is not valid.");
                 }
                 return name;
             }catch (ExceptionNameNotValid e){

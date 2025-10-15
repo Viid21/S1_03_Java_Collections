@@ -47,11 +47,11 @@ public class ListManager {
         }
     };
 
-    public static Comparator<Client> getDescendantName(){
+    public static Comparator<Client> getDescendantName() {
         return descendantName;
     }
 
-    public static Comparator<Client> getAscendantName(){
+    public static Comparator<Client> getAscendantName() {
         return ascendantName;
     }
 
@@ -71,10 +71,10 @@ public class ListManager {
         return descendantSurnames;
     }
 
-    public static List<Client> clientsListBuilder(List<String> lines){
+    public static List<Client> clientsListBuilder(List<String> lines) {
         List<Client> clientsList = new ArrayList<>();
 
-        for(String line : lines){
+        for (String line : lines) {
             String[] parts = line.split(",");
             clientsList.add(new Client(parts[0], parts[1], parts[2]));
         }

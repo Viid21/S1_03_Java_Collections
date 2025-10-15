@@ -23,7 +23,7 @@ public class Client {
         return id;
     }
 
-    public String toString(){
+    public String toString() {
         return name + "   " + surnames + "   " + id;
     }
 }
